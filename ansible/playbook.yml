@@ -47,8 +47,8 @@
         env:
           SERVER_MESSAGE: "{{ ansible_default_ipv4.address }}"
 
-  - name: Datadog http check
-    hosts: webservers
-    remote_user: root
-    roles:
-      - role: datadog.datadog
+- name: Datadog http check
+  hosts: webservers
+  remote_user: root
+  roles:
+    - role: datadog.datadog
