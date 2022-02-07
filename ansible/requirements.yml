@@ -1,5 +1,8 @@
 collections:
-- name: community.docker
+  - community.docker
+  - community.general
+  - ansible.posix
 
 roles:
   - name: datadog.datadog
+  - name: geerlingguy.pip
