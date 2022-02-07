@@ -1,0 +1,3 @@
+datadog_api_key: "{{ DATADOG_API_KEY }}"
+do_token: "{{ DO_TOKEN }}"
+docker_token: "{{ DOCKER_TOKEN }}"

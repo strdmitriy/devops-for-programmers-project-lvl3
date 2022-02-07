@@ -1,7 +1,3 @@
-data "digitalocean_ssh_key" "macbook" {
-  name = "macbook"
-}
-
 resource "digitalocean_droplet" "web" {
   count = 2
   image  = "docker-20-04"
