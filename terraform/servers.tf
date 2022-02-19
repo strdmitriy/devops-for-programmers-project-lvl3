@@ -1,7 +1,7 @@
 resource "digitalocean_droplet" "web" {
   count = 2
-  image  = "docker-20-04"
-  name = "web-${count.index + 1}"
+  image = "docker-20-04"
+  name   = "web-${count.index + 1}"
   region = "ams3"
   size   = "s-1vcpu-1gb"
 
@@ -16,8 +16,8 @@ resource "digitalocean_domain" "domain" {
 
 resource "digitalocean_record" "static_domain_record" {
   domain = digitalocean_domain.domain.name
-  type   = "A"
-  name   = "@"
+  type = "A"
+  name = "@"
   value  = digitalocean_loadbalancer.loadbalancer.ip
 }
 
@@ -28,7 +28,7 @@ resource "digitalocean_certificate" "certification" {
 }
 
 resource "digitalocean_loadbalancer" "loadbalancer" {
-  name = "loadbalancer"
+  name   = "loadbalancer"
   region = "ams3"
 
   forwarding_rule {
