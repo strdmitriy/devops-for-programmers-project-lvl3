@@ -19,26 +19,10 @@
       pip:
         name: docker
 
-    - name: Add the user 'deploy' with a primary group of 'docker'
-      ansible.builtin.user:
-        name: deploy
-        group: docker
-
-    - name: Set authorized key in alternate location
-      ansible.posix.authorized_key:
-        user: deploy
-        state: present
-        key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
-
-    - name: Log into DockerHub
-      community.docker.docker_login:
-        username: "0136"
-        password: "{{ docker_token }}"
-
     - name: Run container
       community.docker.docker_container:
         name: devops-example-app
-        image: 0136/private-devops-example-app
+        image: 0136/devops-example-app
         published_ports: 5000:5000
         restart_policy: always
         restart: yes
