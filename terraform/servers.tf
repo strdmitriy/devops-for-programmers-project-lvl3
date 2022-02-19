@@ -28,7 +28,7 @@ resource "digitalocean_certificate" "certification" {
   domains = [digitalocean_domain.domain.name]
 }
 
-resource "digitalocean_loadbalance" "loadbalancer" {
+resource "digitalocean_loadbalancer" "loadbalancer" {
   name = "loadbalancer"
   region = "ams3"
 
