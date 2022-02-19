@@ -1,9 +1,9 @@
 resource "digitalocean_droplet" "web" {
-  count = 2
-  image = "docker-20-04"
-  name   = "web-${count.index + 1}"
-  region = "ams3"
-  size   = "s-1vcpu-1gb"
+  count    = 2
+  image    = "docker-20-04"
+  name     = "web-${count.index + 1}"
+  region   = "ams3"
+  size     = "s-1vcpu-1gb"
 
   ssh_keys = [
     data.digitalocean_ssh_key.macbook.id
@@ -16,8 +16,8 @@ resource "digitalocean_domain" "domain" {
 
 resource "digitalocean_record" "static_domain_record" {
   domain = digitalocean_domain.domain.name
-  type = "A"
-  name = "@"
+  type   = "A"
+  name   = "@"
   value  = digitalocean_loadbalancer.loadbalancer.ip
 }
 
@@ -41,19 +41,19 @@ resource "digitalocean_loadbalancer" "loadbalancer" {
 
 
   forwarding_rule {
-    entry_port = 443
+    entry_port     = 443
     entry_protocol = "https"
 
-    target_port = 5000
+    target_port     = 5000
     target_protocol = "http"
 
     certificate_name = digitalocean_certificate.certification.name
   }
 
   healthcheck {
-    port = 5000
+    port     = 5000
     protocol = "http"
-    path = "/"
+    path     = "/"
   }
 
   droplet_ids = digitalocean_droplet.web.*.id
