@@ -12,7 +12,6 @@ resource "digitalocean_droplet" "web" {
 
 resource "digitalocean_domain" "domain" {
   name = "hexlet.devops-and1.club"
-  ip_address = digitalocean_loadbalancer.loadbalancer.ip
 }
 
 resource "digitalocean_record" "static_domain_record" {
