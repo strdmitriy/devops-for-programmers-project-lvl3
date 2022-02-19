@@ -49,6 +49,6 @@
 
 - name: Datadog http check
   hosts: webservers
-  remote_user: root
+  gather_facts: no
   roles:
     - role: datadog.datadog
