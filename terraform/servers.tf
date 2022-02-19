@@ -1,9 +1,9 @@
 resource "digitalocean_droplet" "web" {
-  count    = 2
-  image    = "docker-20-04"
-  name     = "web-${count.index + 1}"
-  region   = "ams3"
-  size     = "s-1vcpu-1gb"
+  count  = 2
+  image  = "docker-20-04"
+  name   = "web-${count.index + 1}"
+  region = "ams3"
+  size   = "s-1vcpu-1gb"
 
   ssh_keys = [
     data.digitalocean_ssh_key.macbook.id
@@ -32,10 +32,10 @@ resource "digitalocean_loadbalancer" "loadbalancer" {
   region = "ams3"
 
   forwarding_rule {
-    entry_port = 80
+    entry_port     = 80
     entry_protocol = "http"
 
-    target_port = 5000
+    target_port     = 5000
     target_protocol = "http"
   }
 
