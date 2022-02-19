@@ -1,11 +1,3 @@
-- name: Setup Infrastructure
-  hosts: all
-  connection: local
-  roles:
-    - name: infrastructure
-      vars:
-        terraform_dir: "{{ playbook_dir }}/../terraform"
-
 - name: Deploy
   hosts: all
   remote_user: root
