@@ -17,7 +17,7 @@ deploy:
 	ansible-playbook -i ansible/hosts -v --vault-password-file ansible/vault-password ansible/playbook.yml
 
 encrypt-vault:
-	ansible-vault encrypt $(FILE) --vault-password-file ansible/vault-password
+	ansible-vault encrypt $(FILE) --vault-password-file vault-password
 
 decrypt-vault:
-	ansible-vault decrypt $(FILE) --vault-password-file ansible/vault-password
+	ansible-vault decrypt $(FILE) --vault-password-file vault-password
